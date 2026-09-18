@@ -21,7 +21,7 @@ Imagery never touches anyone's disk or Drive. Steps 2 and 3 run server-side on t
 ## Getting started
 
 1. Ask to be added as a collaborator on this repo.
-2. Ask to be added to the Google Cloud project so you can read the Earth Engine collection, and to the shared Drive folder tonga-vessels-data.
+2. Ask to be added to the Google Cloud project groupprojectgeog761 so you can read the Earth Engine collection, and as a member of the tonga-vessels-data Shared Drive. A Shared Drive appears automatically once you are a member — no shortcut needed, and the path is the same for everyone.
 3. Read the workflow guide before your first session.
 4. Open a notebook in Colab and run `notebooks/shared/00_setup_check.ipynb`. If every cell completes, you are set up. The last two cells show the standard header and the save-your-work cell — copy both into every notebook you make.
 
@@ -38,6 +38,9 @@ labels/       annotation files (GeoJSON) — small enough for Git
 docs/         workflow guide, labelling guide, decisions log
 ```
 Imagery is **not** stored in this repo, and not in Drive either — it lives in the project's Earth Engine ImageCollection. The shared Drive folder holds only exported patches, labels, models and outputs.
+
+**IMPORTANT**
+Earth Engine exports go to the personal Drive of whoever runs the task — it cannot write to a Shared Drive directly — so move exported files across afterwards.
 
 
 ## Conventions
