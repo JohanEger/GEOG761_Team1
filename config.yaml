@@ -51,7 +51,7 @@ aoi:
 # Paths for everything that is NOT imagery.
 # Imagery lives in GEE; this is for labels, patches, models and outputs.
 paths:
-  data_root: "/content/drive/MyDrive/tonga-vessels-data"
+  data_root: "/content/drive/Shareddrives/tonga-vessels-data"
   patches: "patches"           # exported candidate patches for labelling
   labels: "labels"
   reference: "reference"       # Maxar tiles, screenshots used for verification
