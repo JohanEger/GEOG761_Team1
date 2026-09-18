@@ -1,0 +1,45 @@
+# Imagery and large data — never commit
+*.tif
+*.tiff
+*.jp2
+*.zip
+*.tar.gz
+data/
+raw/
+preprocessed/
+outputs/
+
+# Model weights
+models/
+*.pth
+*.pt
+*.pkl
+*.h5
+
+# Secrets
+.env
+secrets.json
+*.key
+planet_api_key*
+
+# Service account keys — never commit
+*.json
+!aoi/*.json
+sa-key*
+*.b64
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
