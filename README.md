@@ -12,8 +12,8 @@ Because PlanetScope pixels are 3 m, the smallest boats are not detectable. Estab
 
 1. Order and download PlanetScope scenes (`src/ordering.py`)
 2. Cloud mask, land mask, tile, check co-registration (`src/preprocess.py`)
-3. Find candidate vessels via temporal median background subtraction — in Earth Engine (src/candidates.py)
-4. Classify candidates as vessel / wake / false positive — in Colab (src/classify.py)
+3. Find candidate vessels via temporal median background subtraction — in Earth Engine (`src/candidates.py`)
+4. Classify candidates as vessel / wake / false positive — in Colab (`src/classify.py`)
 5. Aggregate to a grid and produce heat maps (`src/aggregate.py`)
 
 Imagery never touches anyone's disk or Drive. Steps 2 and 3 run server-side on the delivered collection; only candidate points and small patches are exported.
