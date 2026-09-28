@@ -3,7 +3,7 @@
     "features": [
         {
             "type": "Feature",
-            "properties": {},
+            "properties": {"title": "Haapai"},
             "geometry": {
                 "type": "Polygon",
                 "coordinates": [

@@ -3,7 +3,7 @@
     "features": [
         {
             "type": "Feature",
-            "properties": {},
+            "properties": {"title": "Nukualofa"},
             "geometry": {
                 "type": "Polygon",
                 "coordinates": [
