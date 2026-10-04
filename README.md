@@ -51,6 +51,7 @@ Earth Engine exports go to the personal Drive of whoever runs the task — it ca
 - Run the nbstripout line in the save cell before committing, so outputs stay out of Git
 - CRS is EPSG:5887 (Tonga Map Grid) everywhere — Tonga straddles the UTM 1S/2S boundary
 - Check quota before ordering; GEE deliveries count against the monthly allowance
+- Every ordered scene is logged in `docs/ordered_scenes.csv` (and every order in `docs/data_catalogue.csv`): search it for a scene ID before ordering. `scripts/order_scenes.py` checks IDs without using quota, places orders and writes both logs — usage at the top of the file
 - File naming: `<aoi>_<YYYYMMDD>_<product>_<processing>.tif`
 - Decisions go in `docs/decisions.md` with a date
 
