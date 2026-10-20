@@ -1,13 +1,8 @@
 # Areas of interest
 
-GeoJSON polygons, WGS84 (EPSG:4326), one file per area. Drawn in geojson.io with 4 vertices each
+| File | Used for |
+|---|---|
+| `Nukualofa_wharf.geojson` | Ordering clip AOI for all PlanetScope scenes; outline in the maps. |
+| `analysis_zone.geojson` | Polygons with a `zone` field (`harbour`, `open`, `shore`) drawn in QGIS. Restricts detection to the harbour, wharf basins and approaches (reef flats and surf excluded), and assigns each candidate a zone. |
 
-Expected files:
-
-- `Eua.geojson` — 'Eua
-- `Nukualofa.geojson` — Nuku'alofa, Tongatapu
-- `Neiafu.geojson` — Neiafu, Vava'u
-- `Haapai.geojson` — Ha'apai
-
-Include enough water around each harbour to capture approaches and anchorages, but
-clip tightly enough that orders do not waste quota on open ocean.
+The notebooks reproject both files on load, so any CRS works.
