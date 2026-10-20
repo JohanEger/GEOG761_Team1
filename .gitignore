@@ -43,3 +43,10 @@ venv/
 Thumbs.db
 .vscode/
 .idea/
+# Planet-derived data with image values — never commit (licence)
+*.npy
+*.npz
+*.joblib
+features_*.csv
+cand_features*
+*.gpkg

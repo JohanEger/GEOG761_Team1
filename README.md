@@ -1,61 +1,40 @@
-# Tonga-Vessels
+# Tonga-Vessels: a recognised maritime picture of small-vessel activity in Tongan waters
 
-Detection and mapping of small-vessel activity in Tongan waters from PlanetScope imagery.
+GEOG761 group project, University of Auckland, 2026.
 
-## What this project does
+## Motivation
 
-We use multi-month PlanetScope time series to detect small vessels around the Tongan archipelago and aggregate the detections into activity heat maps. The motivation is humanitarian: when cyclones, tsunamis or volcanic activity damage primary ports, small vessels become an important means of delivering aid, and there is little systematic knowledge of where they operate.
+When cyclones, tsunamis or volcanic activity damage primary ports, small vessels become an important way of delivering aid, and there is little systematic knowledge of where they operate. This project tests two ways of detecting small vessels in satellite imagery of Tongan harbours, with Nuku'alofa as the main study area, and maps where they are active.
 
-Because PlanetScope pixels are 3 m, the smallest boats are not detectable. Establishing the minimum detectable vessel size is one of the project's research questions, not a limitation to be hidden.
+## Approaches
 
-## Pipeline
+| | Approach | Data | Documentation |
+|---|---|---|---|
+| 1 | Detecting and mapping vessel activity using OBB deep learning (YOLO) | *to be added* | [`docs/approach1-yolo.md`](docs/approach1-yolo.md) *(to be added)* |
+| 2 | Statistical anomaly detection + random-forest classification in a PlanetScope time series | PlanetScope 3 m, 2019–2026 | [`docs/approach2-planetscope.md`](docs/approach2-planetscope.md) |
 
-1. Order and download PlanetScope scenes (`src/ordering.py`)
-2. Cloud mask, land mask, tile, check co-registration (`src/preprocess.py`)
-3. Find candidate vessels via temporal median background subtraction — in Earth Engine (`src/candidates.py`)
-4. Classify candidates as vessel / wake / false positive — in Colab (`src/classify.py`)
-5. Aggregate to a grid and produce heat maps (`src/aggregate.py`)
-
-Imagery never touches anyone's disk or Drive. Steps 2 and 3 run server-side on the delivered collection; only candidate points and small patches are exported.
-
-## Getting started
-
-1. Ask to be added as a collaborator on this repo.
-2. Ask to be added to the Google Cloud project groupprojectgeog761 so you can read the Earth Engine collection, and as a member of the tonga-vessels-data Shared Drive. A Shared Drive appears automatically once you are a member — no shortcut needed, and the path is the same for everyone.
-3. Read the workflow guide before your first session.
-4. Open a notebook in Colab and run `notebooks/shared/00_setup_check.ipynb`. If every cell completes, you are set up. The last two cells show the standard header and the save-your-work cell — copy both into every notebook you make.
-
-You do not need to install anything locally. Colab is enough.
+Each approach page describes its workflow, results, how to reproduce it and known gaps.
 
 ## Repository layout
 
 ```
-aoi/          study area polygons (GeoJSON)
-src/          shared, reusable code — import this from notebooks
-              (gee.py holds Earth Engine session setup and export helpers)
-notebooks/    one folder per person; shared/ changes only via pull request
-labels/       annotation files (GeoJSON) — small enough for Git
-docs/         workflow guide, labelling guide, decisions log
+aoi/                    AOI and analysis-zone polygons (GeoJSON)
+docs/
+  approach1-yolo.md     Approach 1 workflow (to be added)
+  approach2-planetscope.md  Approach 2 workflow, results, reproduction
+  decisions.md          method decisions log
+  labelling-guide.md    PlanetScope labelling rules and label schema
+  scene_selection.xlsx  PlanetScope scene list used for ordering
+labels/
+  ps_labels.geojson     PlanetScope labels (Approach 2), EPSG:32701
+notebooks/
+  johan/                Approach 2 notebooks
 ```
-Imagery is **not** stored in this repo, and not in Drive either — it lives in the project's Earth Engine ImageCollection. The shared Drive folder holds only exported patches, labels, models and outputs.
 
-**IMPORTANT**
-Earth Engine exports go to the personal Drive of whoever runs the task — it cannot write to a Shared Drive directly — so move exported files across afterwards.
+## Licensing and attribution
 
-
-## Conventions
-
-- Branch names: `<yourname>/<task>`, short-lived, merged within a few days
-- Never commit directly to `main`
-- Parameters and paths come from `config.yaml`, never hardcoded in notebooks
-- Run the nbstripout line in the save cell before committing, so outputs stay out of Git
-- CRS is EPSG:5887 (Tonga Map Grid) everywhere — Tonga straddles the UTM 1S/2S boundary
-- Check quota before ordering; GEE deliveries count against the monthly allowance
-- File naming: `<aoi>_<YYYYMMDD>_<product>_<processing>.tif`
-- Decisions go in `docs/decisions.md` with a date
-
-## Data licensing
-
-PlanetScope imagery is licensed to us under Planet's Education and Research programme.
-Do not redistribute imagery or any derived product that could reconstruct it. Check the
-licence terms before publishing figures or releasing label files.
+- **Code:** MIT (see `LICENSE`).
+- **Labels and AOIs** (`labels/`, `aoi/`): CC BY 4.0. Labels were made by visual interpretation of satellite imagery and contain point locations, scores and classes only — no image values.
+- **PlanetScope imagery** © Planet Labs PBC, used under Planet's Education and Research programme. Imagery and datasets containing image values are not redistributed here; figures in the notebooks are rendered images only.
+- **Maxar imagery** used for comparison figures: Maxar Open Data Program, CC BY-NC 4.0. Not included in the repository.
+- **Water mask:** ESA WorldCover 10 m 2021 v200, © ESA WorldCover project, CC BY 4.0.
